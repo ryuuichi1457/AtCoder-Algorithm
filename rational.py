@@ -94,7 +94,7 @@ class rational:
             else:
                 raise self.TYPE_ERROR("その型では演算できません")
         
-        return rational(self.get_mo()*(other.get_de())-other.get_mo()*(self.get_de()),self.get_de()*other.get_de())
+        return rational(-self.get_mo()*(other.get_de())+other.get_mo()*(self.get_de()),self.get_de()*other.get_de())
     
     def __rmul__(self,other):
         if type(other)!=rational:
@@ -112,6 +112,6 @@ class rational:
             else:
                 raise self.TYPE_ERROR("その型では演算できません")
         
-        return rational(self.get_mo()*other.get_de(),self.get_de()*other.get_mo())
+        return rational(self.get_de()*other.get_mo(),self.get_mo()*other.get_de())
     def few(self):
         return self.get_mo()/self.get_de()
