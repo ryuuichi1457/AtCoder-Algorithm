@@ -1,7 +1,7 @@
 class rational:
     class TYPE_ERROR(Exception):
         pass
-    
+
     def __init__(self,mo:int,de:int):
         tmp=self.gcd(mo,de)
         self.mo=mo//tmp
@@ -78,5 +78,17 @@ class rational:
         return (self.judgment(other).get_de()==self.get_de())and(self.judgment(other).get_mo()==self.get_mo())
     
     def __ne__(self,other):
-        return (self.judgment(other).get_de()!=self.get_de())or(self.judgment(other).get_mo()!=self.get_mo())
+        return not (self.judgment(other).get_de()==self.get_de())and(self.judgment(other).get_mo()==self.get_mo())
     
+    def __lt__(self,other):
+        return (self.judgment(other)-self).get_mo()>0
+    
+    def __gt__(self,other):
+        return (self.judgment(other)-self).get_mo()<0
+    
+    def __le__(self,other):
+        return (self.judgment(other)-self).get_mo()>=0
+    
+    def __ge__(self,other):
+        return (self.judgment(other)-self).get_mo()<=0
+        
