@@ -1,5 +1,5 @@
 import random
-def Miller_Rabin_Test(N,K=20):#Kは試行回数、一般に誤判定する確率は1/4^K　(初期値20だと1/1.2E+24ぐらい)
+def IsPrime(N,K=20):#Miller_Rabin_Testという確率的素数判定砲を使用#Kは試行回数、一般に誤判定する確率は1/4^K　(初期値20だと1/1.2E+24ぐらい)
     if N<2:
         return False
     if N%2==0:
