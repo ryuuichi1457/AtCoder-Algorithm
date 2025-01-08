@@ -93,5 +93,11 @@ class Number_Theoretic_Transform():
         BN=self.NTT(B)
         CN=[(AN[i]*BN[i])%self.MOD for i in range(len(AN))]
         C=self.NTT_I(CN)
-        return C
+        res=[]
+        F=False
+        for i in C:
+            if i!=0 or F:
+                F=True
+                res.append(i)
+        return res
 
