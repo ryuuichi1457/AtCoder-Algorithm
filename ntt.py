@@ -100,4 +100,3 @@ class Number_Theoretic_Transform():
                 F=True
                 res.append(i)
         return res
-
