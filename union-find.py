@@ -28,4 +28,4 @@ for i in range(Q):
     if x==0:
         uf.union(u,v)
     else:
-        print(1 if uf.same(u,v) else 0)
+        print(1 if uf.same(u,v) else 0) 
