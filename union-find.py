@@ -2,24 +2,23 @@ class union_find:
     def __init__(self,N):
         self.N=N
         self.Root=[i for i in range(N)]
-        self.dict={i:i for i in range(N)}
-        #dictはインデックスと実際のインデックスを適合させる
+        self.Par=[1 for _ in range(N)]
     def find_root(self,u):
-        t=self.dict[u]
+
         tmp=[]
-        while self.Root[self.dict[t]]!=t:
-            tmp.append(self.dict[t])
-            t=self.Root[self.dict[t]]
+        while self.Root[u]!=u:
+            tmp.append(u)
+            u=self.Root[u]
         for i in tmp:
-            self.Root[i]=t
-        return t
+            self.Root[i]=u
+        return u
     def union(self,u,v):
-        self.Root[self.dict[self.find_root(u)]]=self.find_root(v)
+        self.Root[self.find_root(u)]=self.find_root(v)
+        self.Par[self.find_root(v)]+=self.Par[self.find_root(u)]
     def same(self,u,v):
-        if self.find_root(u)==self.find_root(v):
-            return 1
-        else:
-            return 0
+        return self.find_root(u)==self.find_root(v)
+    def size(self,u):
+        return self.Par[self.find_root(u)]
     
     
 N,Q=map(int,input().split())
